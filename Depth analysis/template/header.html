@@ -1,0 +1,82 @@
+<header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.webp" alt=""> -->
+        <h1 class="sitename">iConstruction</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        <ul>
+        {%if session['role']==1%}
+          <li><a href="/" class="active">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/projects">Projects</a></li>
+          <li class="dropdown"><a href="#"><span>Crack Analysis</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="/crack">Crack Detection</a></li>
+              <!--li><a href="/previous_detection">Recents</a></li-->
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>Users</span><i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a onclick="openCustomers()">Customers</a></li>
+              <li><a onclick="openEngineers()">Engineers</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>Welcome {{session['name']}}</span><i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="/profile">Profile</a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </li>
+        {%elif session['role']==2%}
+          <li><a href="/" class="active">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/projects">Projects</a></li>
+          <li class="dropdown"><a href="#"><span>Crack Analysis</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="/">Crack Detection</a></li>
+              <li><a href="/">Recents</a></li>
+            </ul>
+          </li>
+          <li><a href="/contact">Contact</a></li>
+          <li class="dropdown"><a href="#"><span>Welcome {{session['name']}}</span><i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="/profile">Profile</a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </li>
+        {%elif session['role']==3%}
+          <li><a href="/" class="active">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/projects">Projects</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/">Crack Analysis</a></li>
+          <li class="dropdown"><a href="#"><span>Welcome {{session['name']}}</span><i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="/profile">Profile</a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </li>
+        {%else%}
+          <li><a href="/" class="active">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/projects">Projects</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a onclick="openRegister()">Register</a></li>
+          <li><a onclick="openLogin()">Login</a></li>
+        {%endif%}
+        </ul>
+        
+      </nav>
+
+    </div>
+  </header>
+

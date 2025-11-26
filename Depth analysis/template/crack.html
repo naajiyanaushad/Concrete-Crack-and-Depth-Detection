@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block content %}
+
+{%include("header.html")%}
+
+<!-- Page Title -->
+<div class="page-title dark-background" style="background-image: url(/static/assets/img/construction/showcase-2.webp);">
+  <div class="container position-relative">
+    <h1>Crack Detection</h1>
+    <p>Esse dolorum voluptatum ullam est sint nemo et est ipsa porro placeat quibusdam quia assumenda numquam molestias.
+    </p>
+    <nav class="breadcrumbs">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li class="current">Crack Detection</li>
+      </ol>
+    </nav>
+  </div>
+</div><!-- End Page Title -->
+
+<!-- About Section -->
+<section id="about" class="about section">
+
+  <div class="container">
+
+    <div class="row align-items-center">
+
+      <div class="col-lg-6 order-2 order-lg-1">
+        <div class="content">
+          <!--h2 class="section-heading mb-4">Built on Excellence, Driven by Vision</h2-->
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12 mb-5 mb-lg-0">
+                <form class="contact-form" action="/crack_result" method="post" autocomplete="off"
+                  enctype="multipart/form-data">
+                  <div class="row">
+
+                    <div class="col-6">
+                      <div class="mb-3">
+                        <label class="text-black" for="fname">Upload Crack Image</label>
+                        <input type="file" name="img" class="form-control" id="pp">
+                      </div>
+                    </div>
+
+                  </div>
+                  <button type="submit" class="btn btn-primary text-white">Check Prediction</button>
+                </form>
+              </div>
+
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="col-lg-6 order-1 order-lg-2">
+        <div class="image-section">
+          <div class="main-image">
+            <img src="/static/assets/img/construction/project-4.webp" alt="Construction project showcase"
+              class="img-fluid">
+          </div>
+          <div class="floating-badge">
+            <div class="badge-content">
+              <i class="bi bi-award"></i>
+              <div class="badge-text">
+                <span class="badge-title">Quality Certified</span>
+                <span class="badge-subtitle">Since 1999</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section><!-- /About Section -->
+
+{% endblock %}

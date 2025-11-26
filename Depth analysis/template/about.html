@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block content %}
+
+{%include("header.html")%}
+
+    <!-- Page Title -->
+    <div class="page-title dark-background" style="background-image: url(/static/assets/img/construction/showcase-2.webp);">
+      <div class="container position-relative">
+        <h1>About</h1>
+        <p>Esse dolorum voluptatum ullam est sint nemo et est ipsa porro placeat quibusdam quia assumenda numquam molestias.</p>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">About</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <div class="container">
+
+        <div class="row align-items-center">
+
+          <div class="col-lg-6 order-2 order-lg-1">
+            <div class="content">
+              <h2 class="section-heading mb-4">Concrete on Excellence, Driven by Vision</h2>
+              <p class="lead-text mb-4">Concrete crack and depth detection are essential for assessing the condition, strength, and durability of concrete structures such as bridges, pavements, and buildings. The appearance of cracks often indicates the beginning of structural deterioration, and detecting them early helps in planning timely repairs and preventing further damage. Accurate crack detection ensures that potential weaknesses are identified before they lead to costly failures or safety risks.</p>
+              <p class="description-text mb-5">Depth detection complements this process by determining how deep the cracks extend beneath the surface, providing a clearer understanding of the damage severity. By analyzing both surface cracks and their depth, engineers can make informed decisions about maintenance, rehabilitation, and load-bearing capacity. This combined analysis enhances structural safety, ensures long-term stability, and improves the overall lifespan of concrete infrastructures.</p>
+
+              <div class="stats-grid">
+                <div class="stat-item">
+                  <div class="stat-number">25+</div>
+                  <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">500+</div>
+                  <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">98%</div>
+                  <div class="stat-label">Client Satisfaction</div>
+                </div>
+              </div>
+
+              <div class="cta-section">
+                <a href="/services" class="cta-link">
+                  Explore Our Services
+                  <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 order-1 order-lg-2">
+            <div class="image-section">
+              <div class="main-image">
+                <img src="/static/assets/img/construction/project-4.webp" alt="Construction project showcase" class="img-fluid">
+              </div>
+              <div class="floating-badge">
+                <div class="badge-content">
+                  <i class="bi bi-award"></i>
+                  <div class="badge-text">
+                    <span class="badge-title">Quality Certified</span>
+                    <span class="badge-subtitle">Since 1999</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+{% endblock %}

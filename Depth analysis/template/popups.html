@@ -1,0 +1,554 @@
+<style>
+      .star-rating {
+    direction: rtl;
+    display: inline-flex;
+    gap: 5px;
+  }
+  .star-rating input[type="radio"] {
+    display: none;
+  }
+  .star-rating label {
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .star-rating input[type="radio"]:checked ~ label {
+    color: #ffc107;
+  }
+  .star-rating label:hover,
+  .star-rating label:hover ~ label {
+    color: #ffc107;
+  }
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.6);
+        /* Black with opacity */
+    }
+
+    .modal-content {
+        background-color: #fff;
+        margin: 10% auto;
+        padding: 20px;
+        border-radius: 10px;
+        width: 700px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        position: relative;
+        animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        color: #aaa;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .close:hover {
+        color: #000;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<div id="register" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Register</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 mb-5 mb-lg-0">
+                    <form class="contact-form" action="/register" method="post"
+                        autocomplete="off" enctype="multipart/form-data">
+                        <div class="row">
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="fname">Full Name</label>
+                                    <input type="text" class="form-control" id="fname" name="fname">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="dob">Date of Birth</label>
+                                    <input type="date" name="dob" class="form-control" id="dob">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="mail">Email</label>
+                                    <input type="email" class="form-control" id="mail" name="email">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="contact">Contact Number</label>
+                                    <input type="text" name="contact" class="form-control" id="contact">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="address">Address</label>
+                                    <input type="text" name="address" class="form-control" id="address">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="gender">Gender</label>
+                                    <div>
+                                        <label class="me-3">
+                                            <input type="radio" name="gender" value="Male"> Male &nbsp;&nbsp;&nbsp;
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="gender" value="Female"> Female &nbsp;&nbsp;&nbsp;
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="gender" value="Others"> Others
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="pp">Profile Picture</label>
+                                    <input type="file" name="img" class="form-control" id="pp">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="uname">Username</label>
+                                    <input type="text" name="uname" class="form-control" id="uname">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="pass">Password</label>
+                                    <input type="password" name="pass" class="form-control" id="pass">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="cpass">Confirm Password</label>
+                                    <input type="password" name="cpass" class="form-control" id="cpass">
+                                </div>
+                            </div>
+
+                        </div>
+                        <button type="submit" class="btn btn-primary text-white">Submit</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="login" class="modal">
+    <div class="modal-content" style="width: 400px;">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Login</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 mb-5 mb-lg-0">
+                    <form class="contact-form" action="/login" method="post"
+                        autocomplete="off">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label class="text-black" for="uname">Username</label>
+                                    <input type="text" class="form-control" id="uname" name="uname">
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label class="text-black" for="pass">Password</label>
+                                    <input type="password" name="pass" class="form-control" id="pass">
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <button type="submit" class="btn btn-primary text-white">Login</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="project" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Register</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 mb-5 mb-lg-0">
+                    <form class="contact-form" action="/register" method="post"
+                        autocomplete="off" enctype="multipart/form-data">
+                        <div class="row">
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="fname">Full Name</label>
+                                    <input type="text" class="form-control" id="fname" name="fname">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="dob">Date of Birth</label>
+                                    <input type="date" name="dob" class="form-control" id="dob">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="mail">Email</label>
+                                    <input type="email" class="form-control" id="mail" name="email">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="contact">Contact Number</label>
+                                    <input type="text" name="contact" class="form-control" id="contact">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="address">Address</label>
+                                    <input type="text" name="address" class="form-control" id="address">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="gender">Gender</label>
+                                    <div>
+                                        <label class="me-3">
+                                            <input type="radio" name="gender" value="Male"> Male &nbsp;&nbsp;&nbsp;
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="gender" value="Female"> Female &nbsp;&nbsp;&nbsp;
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="gender" value="Others"> Others
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="pp">Profile Picture</label>
+                                    <input type="file" name="img" class="form-control" id="pp">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="uname">Username</label>
+                                    <input type="text" name="uname" class="form-control" id="uname">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="pass">Password</label>
+                                    <input type="password" name="pass" class="form-control" id="pass">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="cpass">Confirm Password</label>
+                                    <input type="password" name="cpass" class="form-control" id="cpass">
+                                </div>
+                            </div>
+
+                        </div>
+                        <button type="submit" class="btn btn-primary text-white">Submit</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="add_engineers" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Add Engineer</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 mb-5 mb-lg-0">
+                    <form class="contact-form" action="/add_engineers" method="post"
+                        autocomplete="off" enctype="multipart/form-data">
+                        <div class="row">
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="fname">Full Name</label>
+                                    <input type="text" class="form-control" id="fname" name="fname">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="dob">Date of Birth</label>
+                                    <input type="date" name="dob" class="form-control" id="dob">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="mail">Email</label>
+                                    <input type="email" class="form-control" id="mail" name="email">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="contact">Contact Number</label>
+                                    <input type="text" name="contact" class="form-control" id="contact">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="address">Address</label>
+                                    <input type="text" name="address" class="form-control" id="address">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="gender">Gender</label>
+                                    <div>
+                                        <label class="me-3">
+                                            <input type="radio" name="gender" value="Male"> Male &nbsp;&nbsp;&nbsp;
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="gender" value="Female"> Female &nbsp;&nbsp;&nbsp;
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="gender" value="Others"> Others
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="pp">Profile Picture</label>
+                                    <input type="file" name="img" class="form-control" id="pp">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="uname">Username</label>
+                                    <input type="text" name="uname" class="form-control" id="uname">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="pass">Password</label>
+                                    <input type="password" value="123456" readonly name="pass" class="form-control" id="pass">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="text-black" for="cpass">Confirm Password</label>
+                                    <input type="password" name="cpass" readonly value="123456" class="form-control" id="cpass">
+                                </div>
+                            </div>
+
+                        </div>
+                        <button type="submit" class="btn btn-primary text-white">Submit</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="engineers" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span><br>
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <h2>Engineers</h2>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <a class="btn btn-primary" style="float:right;" onclick="openAddEngineers()">Add Engineers</a>
+            </div>
+        </div>
+        
+        <table class="table">
+            <thead>
+                <th>Sl No</th>
+                <th>Name</th>
+                <th>E-mail</th>
+                <th>Contact</th>
+                <th>Address</th>
+                <th>Username</th>
+            </thead>
+            <tbody>
+            {%for users in all_users%}
+                {%if users[3]==2%}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{users[4]}}</td>
+                    <td>{{users[6]}}</td>
+                    <td>{{users[7]}}</td>
+                    <td>{{users[8]}}</td>
+                    <td>{{users[1]}}</td>
+                </tr>
+                {%endif%}
+            {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="customers" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Engineers</h2>
+        <table class="table">
+            <thead>
+                <th>Sl No</th>
+                <th>Name</th>
+                <th>E-mail</th>
+                <th>Contact</th>
+                <th>Address</th>
+                <th>Username</th>
+            </thead>
+            <tbody>
+            {%for users in all_users%}
+                {%if users[3]==3%}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{users[4]}}</td>
+                    <td>{{users[6]}}</td>
+                    <td>{{users[7]}}</td>
+                    <td>{{users[8]}}</td>
+                    <td>{{users[1]}}</td>
+                </tr>
+                {%endif%}
+            {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+  function openRegister() {
+    document.getElementById("register").style.display = "block";
+  }
+
+  function openLogin() {
+    document.getElementById("login").style.display = "block";
+  }
+
+  function openProject() {
+    document.getElementById("project").style.display = "block";
+  }
+
+  function openEngineers() {
+    document.getElementById("engineers").style.display = "block";
+  }
+
+  function openAddEngineers() {
+    document.getElementById("add_engineers").style.display = "block";
+  }
+
+  function openCustomers() {
+    document.getElementById("customers").style.display = "block";
+  }
+
+
+  function closeModal() {
+    document.getElementById("register").style.display = "none";
+    document.getElementById("login").style.display = "none";
+    document.getElementById("project").style.display = "none";
+    document.getElementById("engineers").style.display = "none";
+    document.getElementById("add_engineers").style.display = "none";
+    document.getElementById("customers").style.display = "none";
+    
+  }
+
+  // Optional: Close modal when clicking outside content
+  window.onclick = function(event) {
+
+    const register = document.getElementById("register");
+    const login = document.getElementById("login");
+    const project = document.getElementById("project");
+    const engineers=document.getElementById("engineers");
+    const add_engineers = document.getElementById("add_engineers");
+    const customers = document.getElementById("customers");
+    
+
+    if (event.target === register) {
+      register.style.display = "none";
+    }
+
+    if (event.target === login) {
+      login.style.display = "none";
+    }
+
+    if (event.target === project) {
+      project.style.display = "none";
+    }
+
+    if (event.target === engineers) {
+      engineers.style.display = "none";
+    }
+
+    if (event.target === add_engineers) {
+      add_engineers.style.display = "none";
+    }
+
+    if (event.target === customers) {
+      customers.style.display = "none";
+    }
+  }
+</script>
